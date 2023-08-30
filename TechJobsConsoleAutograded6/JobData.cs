@@ -47,7 +47,19 @@ namespace TechJobsConsoleAutograded6
             // load data, if not already loaded
             LoadData();
 
-            return null;
+            List<Dictionary<string, string>> search = new List<Dictionary<string, string>>();
+            foreach (Dictionary<string, string> job in AllJobs)
+            {
+                foreach (KeyValuePair<string, string> kvp in job)
+                {
+                    //user input value(arguement) compair to the jobdata.cvs kvps and search doesnt repeat listings
+                    if (kvp.Value.ToLower().Contains(value.ToLower()) && !search.Contains(job))
+                    {
+                        search.Add(job); //collection method
+                    }
+                }
+            }
+            return search;
         }
 
         /**
@@ -70,15 +82,15 @@ namespace TechJobsConsoleAutograded6
 
 
                 //TODO: Make search case-insensitive
-                if (aValue.Contains(value))
+                if (aValue.ToLower().Contains(value.ToLower()))
                 {
-                    jobs.Add(row);
+                        jobs.Add(row);  
                 }
             }
 
             return jobs;
         }
-
+        //
         /*
          * Load and parse data from job_data.csv
          */
