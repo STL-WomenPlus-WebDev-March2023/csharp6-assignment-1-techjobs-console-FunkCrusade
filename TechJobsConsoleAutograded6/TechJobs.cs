@@ -142,16 +142,18 @@ namespace TechJobsConsoleAutograded6
                 Console.WriteLine("No results");
                 return;
             }
-
-            foreach (var job in someJobs)
+            else
             {
-                Console.WriteLine(Environment.NewLine + "*****");
-
-                foreach (var kvp in job)
+                foreach (var job in someJobs)
                 {
-                    Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+                    Console.WriteLine(Environment.NewLine + "*****");
+
+                    foreach (var kvp in job)
+                    {
+                        Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+                    }
+                    Console.WriteLine("*****");
                 }
-                Console.WriteLine("*****");
             }
         }
     }
